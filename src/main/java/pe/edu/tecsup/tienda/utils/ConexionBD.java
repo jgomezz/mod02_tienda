@@ -16,12 +16,16 @@ public class ConexionBD {
 	/**
 	 *  Obtiene una conexion a base de datos
 	 * @return
-	 * @throws SQLException
+	 * @throws SQLException  
 	 */
 	public static Connection obtenerConexion() throws SQLException {
 		Connection con = null;
 		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");  // Para aplicaciones web es necesario
+			
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

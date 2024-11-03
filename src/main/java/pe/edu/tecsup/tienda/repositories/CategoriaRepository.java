@@ -25,7 +25,7 @@ public class CategoriaRepository  {
 	 */
 	public List<Categoria>  listar() {
 		
-		log.info("call obtenerCategorias()");
+		log.info("call listar()");
 		
 		List<Categoria> categorias = new ArrayList<Categoria>();
 
