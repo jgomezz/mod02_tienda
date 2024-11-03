@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import pe.edu.tecsup.tienda.entities.Categoria;
 import pe.edu.tecsup.tienda.utils.ConexionBD;
 
@@ -15,6 +17,7 @@ import pe.edu.tecsup.tienda.utils.ConexionBD;
  */
 public class CategoriaRepositorio  {
 
+	private static final Logger log = Logger.getLogger(CategoriaRepositorio.class);
 	
 	/**
 	 *  Metodo que obtiene todas las categorias
@@ -22,6 +25,7 @@ public class CategoriaRepositorio  {
 	 */
 	public List<Categoria>  obtenerCategorias() {
 		
+		log.info("call obtenerCategorias()");
 		
 		List<Categoria> categorias = new ArrayList<Categoria>();
 
