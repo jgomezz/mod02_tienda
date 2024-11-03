@@ -15,9 +15,9 @@ import pe.edu.tecsup.tienda.utils.ConexionBD;
 /**
  *  Clase para obtener informacion de categorias
  */
-public class CategoriaRepositorio  {
+public class CategoriaRepository  {
 
-	private static final Logger log = Logger.getLogger(CategoriaRepositorio.class);
+	private static final Logger log = Logger.getLogger(CategoriaRepository.class);
 	
 	/**
 	 *  Metodo que obtiene todas las categorias
