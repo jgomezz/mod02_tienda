@@ -27,7 +27,7 @@ public class CategoriaService {
 	 */
 	public List<Categoria> listar() throws Exception {
 		log.info("call listar()");
-		return categoriaRepository.obtenerCategorias();
+		return categoriaRepository.listar();
 	}
 
 }

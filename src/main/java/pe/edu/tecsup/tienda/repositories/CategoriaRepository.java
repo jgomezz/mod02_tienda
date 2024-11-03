@@ -23,7 +23,7 @@ public class CategoriaRepository  {
 	 *  Metodo que obtiene todas las categorias
 	 * @return
 	 */
-	public List<Categoria>  obtenerCategorias() {
+	public List<Categoria>  listar() {
 		
 		log.info("call obtenerCategorias()");
 		
