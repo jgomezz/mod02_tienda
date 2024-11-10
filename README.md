@@ -1,1 +1,1 @@
-## Proyecto demo para el uso de Servlet, JSP y JSTL
+## Proyecto piloto para el uso de Servlet, JSP y JSTL

@@ -38,7 +38,6 @@ public class ProductoListarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		log.info("Call doGet()");
 		try {
 			List<Producto> productos = productoService.listar();

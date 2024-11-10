@@ -14,7 +14,12 @@
 	<%@include file="/WEB-INF/jsp/includes/navbar.jsp"%>
 
 	<%
-	List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+		List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+	
+		String sCP = request.getContextPath();
+		
+		// out.println(sCP);
+		// http://localhost:8080/mod02_tienda/ProductoListarServlet
 	%>
 
 	<div class="container-fluid pt-3">
@@ -34,7 +39,7 @@
 							<th>CATEGOR&Iacute;A</th>
 							<th>PRECIO</th>
 							<th>IMAGEN</th>
-							<th width="300"></th>
+							<th width="300" align="center">ACCIONES</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,13 +51,16 @@
 							<td><%=producto.getPrecio() %></td>
 							<td><img src="" alt=""></td>
 							<td class="text-right">
-								<a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>
-								Mostrar</a>
-								<a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>
-								Editar</a>
-								<a
-								href="<%=request.getContextPath()%>/ProductoEliminarServlet?id=<%=producto.getId() %>"
-								class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>
+								<a href="#" class="btn btn-info btn-sm">
+									<i class="fa fa-eye"></i>
+									Mostrar</a>
+								<a href="#" class="btn btn-warning btn-sm">
+									<i class="fa fa-edit"></i>
+									Editar</a>
+								<a href="<%=sCP%>/ProductoEliminarServlet?id=<%=producto.getId() %>"
+								class="btn btn-danger btn-sm">
+									<i class="fa fa-trash"></i> 
+									Eliminar</a>
 							</td>
 
 						</tr>

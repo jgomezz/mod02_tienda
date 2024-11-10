@@ -119,12 +119,16 @@ public class ProductoRepository {
 
 		stmt.setInt(1, id);
 
-		stmt.executeUpdate();
+		int result = stmt.executeUpdate();
 
 		stmt.close();
 
 		con.close();
 
+		if (result == 0)
+			throw new Exception("Nothing delete for id = " + id);
+		
+		
 		log.info("success!");
 	}
 
