@@ -13,50 +13,49 @@ import org.apache.log4j.Logger;
 
 import pe.edu.tecsup.tienda.entities.Categoria;
 import pe.edu.tecsup.tienda.services.CategoriaService;
+import pe.edu.tecsup.tienda.services.ProductoService;
 
 /**
- * Servlet implementation class CategoriaListarServlet
+ * Servlet implementation class ProductoRegistrarServlet
  */
-@WebServlet("/CategoriaListarServlet")
-public class CategoriaListarServlet extends HttpServlet {
-	
-	
+@WebServlet("/ProductoRegistrarServlet")
+public class ProductoRegistrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = Logger.getLogger(ProductoRegistrarServlet.class);
 
-	private static final Logger log = Logger.getLogger(CategoriaListarServlet.class);
-
-	private CategoriaService categoriaService;
-	
+	private ProductoService productoService;       
+	private CategoriaService categoriaService;       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CategoriaListarServlet() {
+    public ProductoRegistrarServlet() {
         super();
-        categoriaService = new CategoriaService();
+        this.productoService = new ProductoService();
+        this.categoriaService = new CategoriaService();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		log.info("Call doGet() ");
-				
+		log.info("Get ProductoRegistrarServlet");
+		
+		
 		try {
+			List<Categoria> categorias = this.categoriaService.listar();
 			
-			List<Categoria> categorias = categoriaService.listar();
+			request.setAttribute("categorias", categorias);
 			
-			categorias.stream().forEach(x -> log.info(x));
-			
-			
+			request.getRequestDispatcher("/WEB-INF/jsp/producto/registrar.jsp").forward(request, response);
+						
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			log.error(e.getStackTrace());
-			e.printStackTrace();
+			
+			throw new ServletException(e.getMessage(), e);
 		}
-				
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**

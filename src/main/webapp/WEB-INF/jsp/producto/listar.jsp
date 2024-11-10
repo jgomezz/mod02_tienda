@@ -72,7 +72,7 @@
 			</div>
 
 			<div class="card-footer">
-				<a href="<%=request.getContextPath()%>/ProductoRegistrarServlet"
+				<a href="<%=sCP%>/ProductoRegistrarServlet"
 					class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
 			</div>
 		</div>
