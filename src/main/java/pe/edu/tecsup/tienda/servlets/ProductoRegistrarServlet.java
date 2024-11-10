@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import pe.edu.tecsup.tienda.entities.Categoria;
+import pe.edu.tecsup.tienda.entities.Producto;
 import pe.edu.tecsup.tienda.services.CategoriaService;
 import pe.edu.tecsup.tienda.services.ProductoService;
 
@@ -21,11 +22,17 @@ import pe.edu.tecsup.tienda.services.ProductoService;
 @WebServlet("/ProductoRegistrarServlet")
 public class ProductoRegistrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private static final Logger log = Logger.getLogger(ProductoRegistrarServlet.class);
+	
+	private static final int ESTADO_ACTIVO = 1;
 
 	private ProductoService productoService;       
+	
 	private CategoriaService categoriaService;       
-    /**
+    
+	
+	/**
      * @see HttpServlet#HttpServlet()
      */
     public ProductoRegistrarServlet() {
@@ -62,7 +69,41 @@ public class ProductoRegistrarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("TODO POST ProductoEditarServlet ");
+		
+		log.info("Post ProductoRegistrarServlet");
+		
+		String categorias_id = request.getParameter("categorias_id");
+		String nombre = request.getParameter("nombre");
+		String precio = request.getParameter("precio");
+		String stock = request.getParameter("stock");
+		String descripcion = request.getParameter("descripcion");
+
+		
+		Producto producto = new Producto();
+		producto.setCategorias_id(Integer.parseInt(categorias_id));
+		producto.setNombre(nombre);
+		producto.setPrecio(Double.parseDouble(precio));
+		producto.setStock(Integer.parseInt(stock));
+		producto.setDescripcion(descripcion);
+		producto.setEstado(ESTADO_ACTIVO);
+		
+		log.info(producto);
+		
+		
+		try {
+		
+			this.productoService.registrar(producto);
+		
+		} catch (Exception e) {
+			
+			log.error(e.getStackTrace());
+			throw new ServletException(e.getMessage(), e);
+		
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/ProductoListarServlet");
+		
+
 	}
 
 }
