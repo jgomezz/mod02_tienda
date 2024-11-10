@@ -2,6 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <%@page import="pe.edu.tecsup.tienda.entities.Producto"%>
 <%@page import="java.util.List"%>
 
@@ -15,7 +20,6 @@
 	<%@include file="/WEB-INF/jsp/includes/navbar.jsp"%>
 	
 	<% 
-		List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias"); 
 		String sCP = request.getContextPath();
 	%>
 	
@@ -23,7 +27,7 @@
 
 		<div class="display-4 mb-3">Mantenimiento de Productos</div>
 
-		<form action="<%=sCP%>/ProductoRegistrarServlet" method="post">
+		<form action="<%=sCP%>/ProductoRegistrarServlet" method="post"  enctype="multipart/form-data">
 
 			<div class="card">
 			
@@ -43,9 +47,9 @@
 						<label for="categorias_id">Categoría</label>
 						<select name="categorias_id" id="categorias_id" class="form-control" required>
 							<option value="" selected disabled>Seleccione un valor</option>
-							<% for(Categoria categoria : categorias) { %>
-								<option value="<%=categoria.getId()%>"><%=categoria.getNombre()%></option>
-							<% } %>
+							<c:forEach items="${categorias}" var="categoria">
+								<option value='<c:out value="${categoria.id}"/>'><c:out value="${categoria.nombre}"/></option>
+							</c:forEach>
 						</select>
 					</div>
 					

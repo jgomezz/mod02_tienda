@@ -50,7 +50,17 @@
 							<td><c:out value="${producto.nombre}"/></td>
 							<td><c:out value="${producto.categoria.nombre}"/></td>
 							<td><c:out value="${producto.precio}"/></td>
-							<td><img src="" alt=""></td>
+							<td>
+							
+							<c:if test="${producto.imagen_nombre != null}">
+							
+								<img src="<%=sCP%>/files/<c:out value="${producto.imagen_nombre}"/>" 
+									 alt="" 
+									 height="30"/>
+								
+							</c:if>	
+							
+							</td>
 							<td class="text-right">
 								<a href="<%=sCP%>/ProductoMostrarServlet?id=<c:out value="${producto.id}"/>"
 								class="btn btn-info btn-sm">
