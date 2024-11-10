@@ -144,6 +144,9 @@ public class ProductoRegistrarServlet extends HttpServlet {
 		
 		}
 		
+		request.getSession().setAttribute("success", "Registro guardado satisfactoriamente");
+		
+		
 		response.sendRedirect(request.getContextPath() + "/ProductoListarServlet");
 		
 
