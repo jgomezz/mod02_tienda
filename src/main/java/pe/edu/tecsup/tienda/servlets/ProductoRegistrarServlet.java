@@ -18,6 +18,7 @@ import pe.edu.tecsup.tienda.entities.Categoria;
 import pe.edu.tecsup.tienda.entities.Producto;
 import pe.edu.tecsup.tienda.services.CategoriaService;
 import pe.edu.tecsup.tienda.services.ProductoService;
+import pe.edu.tecsup.tienda.utils.ImageUtil;
 
 /**
  * Servlet implementation class ProductoRegistrarServlet
@@ -102,10 +103,22 @@ public class ProductoRegistrarServlet extends HttpServlet {
 					File.separator + "files");
 			
 			if (!filepath.exists()) filepath.mkdir();
+						
 			
 			log.info(filepath.getPath());
 			
 			String filename = System.currentTimeMillis() + "-" + part.getSubmittedFileName();
+			
+			if (!ImageUtil.validarExtensionImage(part.getSubmittedFileName())) {
+				// TO DO
+				
+			}
+			
+			if (!ImageUtil.validarContenidoImage(part)) {
+				// TO DO
+				
+			}
+			
 			
 			part.write(filepath + File.separator + filename);
 			
@@ -137,5 +150,7 @@ public class ProductoRegistrarServlet extends HttpServlet {
 		
 
 	}
+
+
 
 }
