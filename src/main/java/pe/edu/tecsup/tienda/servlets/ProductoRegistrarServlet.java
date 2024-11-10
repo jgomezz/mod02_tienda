@@ -111,12 +111,10 @@ public class ProductoRegistrarServlet extends HttpServlet {
 			
 			if (!ImageUtil.validarExtensionImage(part.getSubmittedFileName())) {
 				// TO DO
-				
 			}
 			
 			if (!ImageUtil.validarContenidoImage(part)) {
 				// TO DO
-				
 			}
 			
 			
